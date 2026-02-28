@@ -1,2 +1,354 @@
-111
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DM-CFO: A Diffusion Model for Compositional 3D Tooth Generation with Collision-Free Optimization</title>
+  <meta name="description" content="DM-CFO project page" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --link:#2563eb;
+      --border:#e5e7eb;
+      --codebg:#f3f4f6;
+      --btn:#111827;
+      --btnText:#ffffff;
+      --btn2:#ffffff;
+      --btn2Text:#111827;
+      --shadow: 0 1px 2px rgba(0,0,0,.06);
+      --radius: 12px;
+      --maxw: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      line-height:1.65;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+    header{
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+    h1{
+      font-size: clamp(26px, 3.3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    h2{
+      font-size: 22px;
+      margin: 28px 0 12px;
+      padding-top: 6px;
+    }
+    p{margin: 10px 0}
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 14px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--btn2);
+      color: var(--btn2Text);
+      box-shadow: var(--shadow);
+      font-weight: 600;
+      user-select:none;
+    }
+    .btn.primary{
+      background: var(--btn);
+      color: var(--btnText);
+      border-color: var(--btn);
+    }
+    .btn[aria-disabled="true"]{
+      opacity:.55;
+      pointer-events:none;
+    }
+    .authors{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 12px;
+      box-shadow: var(--shadow);
+      background:#fff;
+    }
+    .name{font-weight:700}
+    .aff{color:var(--muted); font-size: 13px; margin-top:4px; line-height:1.45}
+    @media (max-width: 900px){
+      .authors{grid-template-columns: repeat(2, minmax(0,1fr));}
+    }
+    @media (max-width: 520px){
+      .authors{grid-template-columns: 1fr;}
+    }
 
+    figure{
+      margin: 14px 0 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      overflow:hidden;
+    }
+    figure img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius: calc(var(--radius) - 6px);
+    }
+    figcaption{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+    }
+    .note{
+      background: var(--codebg);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      color: #374151;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    th, td{
+      padding: 10px 12px;
+      border-bottom:1px solid var(--border);
+      text-align:left;
+      font-size: 14px;
+    }
+    th{background:#fafafa; font-weight:700}
+    tr:last-child td{border-bottom:none}
+    footer{
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    code{
+      background: var(--codebg);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .95em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>DM-CFO: A Diffusion Model for Compositional 3D Tooth Generation with Collision-Free Optimization</h1>
+
+      <div class="btns" role="group" aria-label="project links">
+        <!-- 原页面“Paper”未给出明确 PDF 链接：先占位 -->
+        <a class="btn primary" href="#" aria-disabled="true" title="Paper link not provided on the original page">Paper</a>
+        <a class="btn" href="https://github.com/amateurc/CF-3DTeeth" target="_blank" rel="noreferrer">Code</a>
+      </div>
+
+      <div class="authors" aria-label="authors">
+        <div class="card">
+          <div class="name">Yan Tian</div>
+          <div class="aff">Zhejiang Gongshang University</div>
+        </div>
+        <div class="card">
+          <div class="name">Pengcheng Xue</div>
+          <div class="aff">Zhejiang Gongshang University</div>
+        </div>
+        <div class="card">
+          <div class="name">Weiping Ding</div>
+          <div class="aff">Nantong University</div>
+        </div>
+        <div class="card">
+          <div class="name">Mahmoud Hassaballah</div>
+          <div class="aff">Qena University</div>
+        </div>
+        <div class="card">
+          <div class="name">Karen Egiazarian</div>
+          <div class="aff">Tampere University</div>
+        </div>
+        <div class="card">
+          <div class="name">Aura Conci</div>
+          <div class="aff">Universidade Federal Fluminense</div>
+        </div>
+        <div class="card">
+          <div class="name">Abdulkadir Sengur</div>
+          <div class="aff">Firat University</div>
+        </div>
+        <div class="card">
+          <div class="name">Leszek Rutkowski</div>
+          <div class="aff">Poland and AGH University of Krakow</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        The automatic design of a 3D tooth model plays a crucial role in dental digitization. However, current approaches
+        face challenges in compositional 3D tooth generation because both the layouts and shapes of missing teeth need to be optimized.
+        In addition, collision conflicts are often omitted in 3D Gaussian–based compositional 3D generation, where objects may intersect
+        with each other due to the absence of explicit geometric information on the object surfaces.
+      </p>
+      <p>
+        Motivated by graph generation through diffusion models and collision detection using 3D Gaussians, we propose an approach named
+        DM-CFO for compositional tooth generation, where the layout of missing teeth is progressively restored during the denoising phase
+        under both text and graph constraints. Then, the Gaussian parameters of each layout-guided tooth and the entire jaw are alternately
+        updated using score distillation sampling (SDS).
+      </p>
+      <p>
+        Furthermore, a regularization term based on the distances between the 3D Gaussians of neighboring teeth and the anchor tooth is introduced
+        to penalize tooth intersections. Experimental results on three tooth-design datasets demonstrate that our approach significantly improves
+        the multiview consistency and realism of the generated teeth compared with existing methods.
+      </p>
+    </section>
+
+    <section id="method">
+      <h2>Method</h2>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/framework.png" alt="Method framework" />
+        <figcaption>Overview of DM-CFO framework. :contentReference[oaicite:2]{index=2}</figcaption>
+      </figure>
+    </section>
+
+    <section id="quant">
+      <h2>Quantitative Comparison</h2>
+      <p>
+        Table 2. Quantitative comparison across three dental datasets. The method achieves strong layout accuracy, low collision rate,
+        and improved reconstruction fidelity.
+      </p>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/quantitative_comparison.png" alt="Quantitative comparison table" />
+        <figcaption>Quantitative results on Shining3D / Oralscan3 / DeepBlue. :contentReference[oaicite:3]{index=3}</figcaption>
+      </figure>
+    </section>
+
+    <section id="time">
+      <h2>Inference Time Comparison</h2>
+      <p>Table 3. Inference time (minutes) for different methods.</p>
+      <table aria-label="inference time table">
+        <thead>
+          <tr>
+            <th>Methods</th>
+            <th>MVDream</th>
+            <th>Controlnet</th>
+            <th>GALA3D</th>
+            <th>ComboVerse</th>
+            <th>Ours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Inference Time (minutes)</td>
+            <td>2.5</td>
+            <td>3.5</td>
+            <td>4.2</td>
+            <td>4.4</td>
+            <td>4.8</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/original_input.png" alt="Inference time curve" />
+        <figcaption>Inference-time related visualization (as shown on the original page). :contentReference[oaicite:4]{index=4}</figcaption>
+      </figure>
+    </section>
+
+    <section id="ablation">
+      <h2>Ablation Study</h2>
+      <p>
+        The curve of training loss in ablation studies. The proposed components help achieve faster convergence and better stability during optimization.
+      </p>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/training_loss_curve.png" alt="Training loss curve" />
+        <figcaption>(b) Training loss curve. :contentReference[oaicite:5]{index=5}</figcaption>
+      </figure>
+    </section>
+
+    <section id="qual">
+      <h2>Qualitative Comparison on Shining3D</h2>
+      <p>
+        Qualitative comparisons between ComboVerse, GALA3D, and our approach on the Shining3D tooth design dataset are illustrated.
+        The method better preserves structural details and avoids shape artifacts under complex occlusions and missing regions.
+      </p>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/qualitative_comparison_shining3d.png" alt="Qualitative comparison" />
+        <figcaption>Figure 7: Qualitative comparison on Shining3D. :contentReference[oaicite:6]{index=6}</figcaption>
+      </figure>
+    </section>
+
+    <section id="layout-evo">
+      <h2>Layout Evolution During Training</h2>
+      <p>
+        The layout is progressively optimized as training iterations increase, guided by both textual and structural constraints.
+      </p>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/layout_optimization_over_iterations.png" alt="Layout optimization over iterations" />
+        <figcaption>Figure 10: Layout refinement across iterations. :contentReference[oaicite:7]{index=7}</figcaption>
+      </figure>
+    </section>
+
+    <section id="layout-init">
+      <h2>Layout Initialization Results</h2>
+      <p>
+        Visualization of initial layouts generated by different algorithms. The approach demonstrates stronger geometric coherence and fewer overlaps.
+      </p>
+      <figure>
+        <img src="https://amateurc.github.io/CF-3DTeeth/static/images/layout_comparison.png" alt="Layout initialization results" />
+        <figcaption>Figure 11: Layout initialization comparison. :contentReference[oaicite:8]{index=8}</figcaption>
+      </figure>
+
+      <div class="note">
+        如果你要“完全复刻”原站点那种 GitHub Pages 的 Markdown 风格，也可以把内容写成 <code>index.md</code> 并启用 Jekyll 主题；
+        但你既然要 <code>index.html</code>，这份就是同样观感的纯静态单页。
+      </div>
+    </section>
+
+    <footer>
+      <div>Project page (HTML remake) based on the public content structure of the original site. :contentReference[oaicite:9]{index=9}</div>
+    </footer>
+  </div>
+</body>
+</html>
