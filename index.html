@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Advanced Dental Digitization: Incorporating Shape Priors and Multiview Coherence in Diffusion Models for Tooth Model Design">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ViCo-GS: Controlled Sparse 3D Gaussian Splatting via Visibility-Guided Restoration</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              ViCo-GS: Controlled Sparse 3D Gaussian Splatting via Visibility-Guided Restoration
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+		<div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Chengji Qiu</span><br>
+                 <span class="author-school-block">Zhejiang Gongshang University</span>
+               </div>
+                <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Yan Tian</span><br>
+                 <span class="author-school-block">Zhejiang Gongshang University</span>
+               </div>
+                 <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Mahmoud Hassaballah</span><br>
+                 <span class="author-school-block">Qena University</span>
+               </div>
+                 <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Karen Egiazarian</span><br>
+                 <span class="author-school-block">Tampere University</span>
+               </div>
+                 <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Aura Conci</span><br>
+                 <span class="author-school-block">Universidade Federal Fluminense</span>
+                </div>
+                 <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Abdulkadir Sengur</span><br>
+                 <span class="author-school-block">Firat University</span>
+               </div>
+                 <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                 <span class="author-name-block">Leszek Rutkowski</span><br>
+                 <span class="author-school-block">Poland and AGH University of Krakow</span>
+               </div>
+              <!-- <div class="author-block" style="display: inline-block; width: 20%; vertical-align: top; margin: 1.66%;">
+                <span class="author-name-block">Anonymous</span><br>
+              </div>  -->
+            </div>
+
+            <!-- Links -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+            <!-- /Links -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Hero Section -->
+
+  <!-- Abstract Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+             Novel View Synthesis (NVS) aims to reconstruct a three-dimensional scene from limited input views and render images from arbitrary novel viewpoints. 
+Recent advances in 3D Gaussian Splatting (3DGS) have significantly improved reconstruction quality and rendering efficiency. 
+Existing approaches commonly rely on external depth priors or diffusion-based refinement, which partially alleviate defects, however often rely on predefined pose sampling strategies and oversimplified degradation reason. 
+To address these issues, we propose ViCo-GS, a framework designed for sparse-view novel view synthesis. The method incorporates a Co-visibility Guided Adaptive Restoration mechanism (CGAR) to enhance coverage in under-constrained regions, and introduces a Controlled Consistency Optimization framework (CCO) that decomposes degradation into Gaussian coupling, stochastic artifacts, and geometric instability. Corresponding constraints are imposed to enable a closed-loop optimization of decoupling, suppression, and refinement, thereby improving stability and reconstruction quality under sparse-view settings. Experiments on LLFF, MipNeRF360, Nerfbusters, and Tanks \& Temples demonstrate consistent improvements over existing methods across multiple sparse-view configurations, achieving higher PSNR, SSIM, and LPIPS scores and yielding up to 6% relative improvement.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Abstract Section -->
+
+  <!-- Method Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/overview.png" alt="Description of the image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered mb-5">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Comparison</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Tables 1-4.</strong> Quantitative comparison tables across the LLFF, MipNeRF360, Nerfbusters, and Tanks & Temples datasets demonstrate that the proposed method consistently outperforms existing approaches under various sparse-view settings.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered mb-6">
+      <div class="column is-four-fifths">
+        <h3 class="title is-5">LLFF Dataset</h3>
+        <img src="./static/images/llff.png" alt="Quantitative results on LLFF dataset">
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered mb-6">
+      <div class="column is-four-fifths">
+        <h3 class="title is-5">MipNeRF360 Dataset</h3>
+        <img src="./static/images/360.png" alt="Quantitative results on MipNeRF360 dataset">
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered mb-6">
+      <div class="column is-four-fifths">
+        <h3 class="title is-5">Nerfbusters Dataset</h3>
+        <img src="./static/images/nerf.png" alt="Quantitative results on Nerfbusters dataset">
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-5">Tanks & Temples Dataset</h3>
+        <img src="./static/images/TnT.png" alt="Quantitative results on Tanks & Temples dataset">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <!-- Qualitative Comparison Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Comparison</h2>
+        <div class="content has-text-justified">
+          <p>
+            Qualitative comparisons between <strong>DropGaussian</strong>, <strong>CorGS</strong>, <strong>CoAdaptationGS</strong>, <strong>Difix3D+</strong>, and <strong>our approach</strong> on the <strong>LLFF, MipNeRF360, Tanks & Temples dataset</strong> are illustrated.
+          </p>
+          <figure class="has-text-centered">
+            <img src="./static/images/compare.png"
+                 alt="Qualitative comparison between ComboVerse, GALA3D, and Ours on Shining3D"
+                 style="max-width: 100%; height: auto;">
+            <figcaption style="margin-top: 0.5em; font-style: italic;">
+              <strong>Figure 1:</strong> Qualitative comparisons between DropGaussian, CorGS, CoAdaptationGS, Difix3D+, and <strong>our approach on the <strong>LLFF, MipNeRF360, Tanks & Temples dataset.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ablation Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        
+        <h2 class="title is-3 has-text-centered">Ablation Study</h2>
+
+        <div class="content has-text-justified">
+
+          <!-- Figure 1 -->
+          <figure class="ablation-figure">
+            <img src="./static/images/ablation1.png"
+                 alt="Ablation results without CCO and CGAR compared with full method and GT">
+            <figcaption>
+              <strong>Figure 1.</strong> From left to right: without CCO, without CGAR, full method, and ground truth.
+            </figcaption>
+          </figure>
+
+          <!-- Figure 2 -->
+          <figure class="ablation-figure">
+            <img src="./static/images/ablation2.png"
+                 alt="Restoration ablation results">
+            <figcaption>
+              <strong>Figure 2.</strong> Restoration results without diffusion-based restoration, without progressive restoration, and with the full method.
+            </figcaption>
+          </figure>
+
+          <!-- Figure 3 -->
+          <figure class="ablation-figure">
+            <img src="./static/images/ablation3.png"
+                 alt="Regularization ablation results">
+            <figcaption>
+              <strong>Figure 3.</strong> Optimization results without Novel-View Depth Regularization, without Self-Supervised Artifact Regularization, and without Gaussian Decoupling Regularization.
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+
+</html>
